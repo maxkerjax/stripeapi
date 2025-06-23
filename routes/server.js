@@ -7,6 +7,6 @@ const apidata = require('../controllers/apidata');
 
 router.post('/create-checkout-session', stripeController.createPaymentSession);
 router.post('/loginUser', userController.loginUser);
-router.get('/dashboard', apidata.dashboard);
+router.post('/dashboard', apidata.dashboard);
 
 module.exports = router;
