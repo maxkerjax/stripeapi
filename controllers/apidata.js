@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.STRIPE_SECRET_KEY
+  process.env.STRIPE_SECRET_KEY,
 );
 
 exports.dashboard = async (req, res) => {
