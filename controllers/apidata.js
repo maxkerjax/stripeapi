@@ -4,13 +4,14 @@ const router = express.Router();
 const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
 
+// สร้าง supabase client โดยใช้ Service Role Key ที่มีสิทธิ์อ่านทุกตาราง
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.STRIPE_SECRET_KEY
+  process.env.STRIPE_SECRET_KEY 
 );
 
 // GET /api/dashboard
-router.get("/dashboard", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     // 1. ดึงห้องทั้งหมด
     const { data: rooms, error: roomError } = await supabase
@@ -33,7 +34,7 @@ router.get("/dashboard", async (req, res) => {
 
     const pendingRepairs = repairs.length;
 
-    // 3. การประกาศ (ล่าสุด)
+    // 3. การประกาศ (ทั้งหมด)
     const { data: announcements, error: annError } = await supabase
       .from("announcements")
       .select("*");
@@ -42,7 +43,7 @@ router.get("/dashboard", async (req, res) => {
 
     const announcementCount = announcements.length;
 
-    // 4. คำนวณรายได้เดือนนี้จากตาราง payments
+    // 4. รายได้เดือนนี้จากตาราง payments
     const now = new Date();
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
     const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).toISOString();
