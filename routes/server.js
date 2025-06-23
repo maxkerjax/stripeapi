@@ -5,6 +5,6 @@ const userController = require('../controllers/userController');
 const stripeController = require('../controllers/stripeController');
 
 router.post('/create-checkout-session', stripeController.createPaymentSession);
-router.post('/create-user', userController.createUser);
+router.post('/loginUser', userController.loginUser);
 
 module.exports = router;
