@@ -19,7 +19,7 @@ exports.loginUser = async (req, res) => {
     // เข้าสู่ระบบผ่าน Supabase
     const { data, error } = await supabaseAdmin.auth.signInWithPassword({
       email,
-      password,
+      encrypted_password,
     });
 
     if (error) {
@@ -30,7 +30,7 @@ exports.loginUser = async (req, res) => {
       success: true,
       message: 'เข้าสู่ระบบสำเร็จ',
       user: data.user,
-      session: data.session, // token อยู่ที่นี่
+      session: data.session, 
     });
   } catch (err) {
     console.error('Login error:', err);
