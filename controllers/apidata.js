@@ -11,7 +11,7 @@ const supabase = createClient(
 );
 
 // GET /api/dashboard
-router.get("/", async (req, res) => {
+router.get("/dashboard", async (req, res) => {
   try {
     // 1. ดึงห้องทั้งหมด
     const { data: rooms, error: roomError } = await supabase
