@@ -4,22 +4,20 @@ const { createClient } = require('@supabase/supabase-js');
 
 const supabaseAdmin = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY,
+  process.env.SUPABASE_ANON_KEY
 );
 
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // ตรวจสอบ input
     if (!email || !password) {
       return res.status(400).json({ error: 'กรุณากรอกอีเมลและรหัสผ่าน' });
     }
 
-    // เข้าสู่ระบบผ่าน Supabase
     const { data, error } = await supabaseAdmin.auth.signInWithPassword({
       email,
-      encrypted_password,
+      password, 
     });
 
     if (error) {
@@ -30,7 +28,7 @@ exports.loginUser = async (req, res) => {
       success: true,
       message: 'เข้าสู่ระบบสำเร็จ',
       user: data.user,
-      session: data.session, 
+      session: data.session,
     });
   } catch (err) {
     console.error('Login error:', err);
