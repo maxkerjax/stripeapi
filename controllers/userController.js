@@ -17,7 +17,7 @@ exports.loginUser = async (req, res) => {
     }
 
     // เข้าสู่ระบบผ่าน Supabase
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabaseAdmin.auth.signInWithPassword({
       email,
       password,
     });
