@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.STRIPE_SECRET_KEY // ควรใช้ SERVICE ROLE
+  process.env.STRIPE_SECRET_KEY
 );
 
 // GET /api/dashboard
