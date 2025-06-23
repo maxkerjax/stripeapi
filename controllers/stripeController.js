@@ -1,7 +1,7 @@
 require('dotenv').config();
 const Stripe = require('stripe');
 
-const stripeSecretKey = process.env.VITE_STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY;
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY;
 if (!stripeSecretKey) {
   throw new Error("Missing Stripe secret key in environment variables");
 }
