@@ -7,6 +7,6 @@ const reportController = require('../controllers/reportController');
 
 router.post('/create-checkout-session', stripeController.createPaymentSession);
 router.post('/loginUser', userController.loginUser);
-router.get('/getReportData', reportController.dashboard);
+router.get('/getReportData', reportController.getReportData);
 
 module.exports = router;
