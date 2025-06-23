@@ -4,7 +4,7 @@ const { createClient } = require('@supabase/supabase-js');
 
 const supabaseAdmin = createClient(
   process.env.SUPABASE_URL,
-  process.env.STRIPE_SECRET_KEY,
+  process.env.SUPABASE_ANON_KEY,
 );
 
 exports.loginUser = async (req, res) => {
